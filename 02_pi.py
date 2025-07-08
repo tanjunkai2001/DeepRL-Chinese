@@ -3,16 +3,16 @@ import numpy as np
 
 
 def approxiate_pi(n: int):
-    # 在[-1, 1] x [-1, 1]的空间中随机取n个点。
-    x_lst = np.random.uniform(-1, 1, size=n)
-    y_lst = np.random.uniform(-1, 1, size=n)
+    # 在[-1, 1] x [-2, 2]的空间中随机取n个点。
+    x_lst = np.random.uniform(-1, 1, size=n) # 随机生成n个点的x坐标
+    y_lst = np.random.uniform(-2, 2, size=n) # 随机生成n个点的y坐标
     # 统计距离圆心距离在1以内的点。
     m = 0
     for x, y in zip(x_lst, y_lst):
         if x ** 2 + y ** 2 <= 1:
             m += 1
     # 近似计算圆周率。
-    pi = 4 * m / n
+    pi = 2 * 4 * m / n
     return pi
 
 
