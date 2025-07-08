@@ -206,21 +206,21 @@ def eval(args, env, agent):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--env", default="CartPole-v1", type=str, help="Environment name.")
-    parser.add_argument("--dim_state", default=4, type=int, help="Dimension of state.")
-    parser.add_argument("--num_action", default=2, type=int, help="Number of action.")
-    parser.add_argument("--discount", default=0.99, type=float, help="Discount coefficient.")
-    parser.add_argument("--max_steps", default=100_000, type=int, help="Maximum steps for interaction.")
-    parser.add_argument("--lr", default=1e-3, type=float, help="Learning rate.")
-    parser.add_argument("--batch_size", default=32, type=int, help="Batch size.")
-    parser.add_argument("--no_cuda", action="store_true", help="Avoid using CUDA when available")
-    parser.add_argument("--seed", default=42, type=int, help="Random seed.")
-    parser.add_argument("--warmup_steps", default=10_000, type=int, help="Warmup steps without training.")
-    parser.add_argument("--output_dir", default="output", type=str, help="Output directory.")
-    parser.add_argument("--epsilon_decay", default=1 / 1000, type=float, help="Epsilon-greedy algorithm decay coefficient.")
-    parser.add_argument("--do_train", action="store_true", help="Train policy.")
-    parser.add_argument("--do_eval", action="store_true", help="Evaluate policy.")
+    parser = argparse.ArgumentParser() # 创建参数解析器
+    parser.add_argument("--env", default="CartPole-v1", type=str, help="Environment name.") # 环境名称
+    parser.add_argument("--dim_state", default=4, type=int, help="Dimension of state.") # 状态维度
+    parser.add_argument("--num_action", default=2, type=int, help="Number of action.") # 动作数量
+    parser.add_argument("--discount", default=0.99, type=float, help="Discount coefficient.") # 折扣系数
+    parser.add_argument("--max_steps", default=100_000, type=int, help="Maximum steps for interaction.") # 最大交互步数
+    parser.add_argument("--lr", default=1e-3, type=float, help="Learning rate.") # 学习率
+    parser.add_argument("--batch_size", default=32, type=int, help="Batch size.") # 批量大小
+    parser.add_argument("--no_cuda", action="store_true", help="Avoid using CUDA when available") # 是否使用CUDA
+    parser.add_argument("--seed", default=42, type=int, help="Random seed.") # 随机种子
+    parser.add_argument("--warmup_steps", default=10_000, type=int, help="Warmup steps without training.") # 预热步数
+    parser.add_argument("--output_dir", default="output", type=str, help="Output directory.") # 输出目录
+    parser.add_argument("--epsilon_decay", default=1 / 1000, type=float, help="Epsilon-greedy algorithm decay coefficient.") # Epsilon衰减系数
+    parser.add_argument("--do_train", action="store_true", help="Train policy.") # 是否训练策略
+    parser.add_argument("--do_eval", action="store_true", help="Evaluate policy.") # 是否评估策略
     args = parser.parse_args()
 
     args.device = torch.device("cuda" if torch.cuda.is_available() and not args.no_cuda else "cpu")
